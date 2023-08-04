@@ -45,13 +45,24 @@ public class MainActivity extends AppCompatActivity {
     private String[] dropdownItems1 = {"Festival de muzica", "Sport", "Bauturi"};
     private String[] dropdownItems2 = {"Stadion", "Castle", "Park"};
 
-
+    private RecyclerView eventsRecyclerView;
+    private EventsAdapter eventsAdapter;
+    private List<Event> eventList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        eventList = createEvents();
+
+        // Initialize RecyclerView
+        eventsRecyclerView = findViewById(R.id.eventsRecyclerView);
+        eventsRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        // Create and set the adapter
+        eventsAdapter = new EventsAdapter(eventList);
+        eventsRecyclerView.setAdapter(eventsAdapter);
 
         Spinner spinner1 = findViewById(R.id.spinner1);
         Spinner spinner2 = findViewById(R.id.spinner2);
@@ -142,6 +153,16 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+
+    private List<Event> createEvents() {
+        List<Event> eventsList = new ArrayList<>();
+
+        eventsList.add(new Event("Untold", "Music Festival", "3 - 6 August 2023", "Cluj-Napoca",  R.drawable.untold4));
+        eventsList.add(new Event("Electric Castle", "Music Festival","14 - 20 June 2023", "Bontida", R.drawable.electriccastle));
+        eventsList.add(new Event("Meci de fotbal",  "Fotbal","3 - 5 September 2023", "Cluj-Napoca", R.drawable.stadion));
+
+        return eventsList;
+    }
 
 
 }

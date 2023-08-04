@@ -8,6 +8,7 @@
 
     <!-- The parent vertical LinearLayout -->
 
+
     <ImageView
         android:id="@+id/imageView4"
         android:layout_width="1500dp"
@@ -25,7 +26,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="56dp"
         android:layout_marginTop="84dp"
-        android:text="Filter"
+        android:text="Filter by"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -35,7 +36,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="228dp"
         android:layout_marginTop="84dp"
-        android:text="Order"
+        android:text="Order by"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -137,6 +138,17 @@
         android:searchIcon="@drawable/scaledfinal"
         tools:layout_editor_absoluteX="29dp"
         tools:layout_editor_absoluteY="28dp" />
+
+
+    <!-- Events Cards -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/eventsRecyclerView"
+        android:layout_width="400dp"
+        android:layout_height="400dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/filterLayout" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
