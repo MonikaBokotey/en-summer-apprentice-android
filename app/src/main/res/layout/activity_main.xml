@@ -3,17 +3,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bckandr">
+    android:background="@drawable/backgrounddd"
+    android:outlineSpotShadowColor="@color/white">
 
     <!-- The parent vertical LinearLayout -->
 
-    <SearchView
-        android:layout_width="285dp"
-        android:layout_height="39dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="24dp"
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="1500dp"
+        android:layout_height="154dp"
+        android:layout_marginTop="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/starry3" />
 
     <Button
         android:id="@+id/filterButton"
@@ -83,6 +87,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
+        android:layout_marginTop="20dp"
         android:background="?android:attr/windowSplashScreenBackground"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -95,10 +100,12 @@
             layout="@layout/event_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
             android:layout_marginTop="16dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0" />
 
         <!-- Any other views you want to add to the second layout -->
 
@@ -115,9 +122,21 @@
         android:background="@null"
         android:contentDescription="Your Image"
         android:scaleType="centerInside"
-        android:src="@drawable/cartshopping"
+        android:src="@drawable/cart3"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <SearchView
+        android:layout_width="75dp"
+        android:layout_height="67dp"
+        android:commitIcon="@drawable/searchiconwhite"
+        android:goIcon="@drawable/searchiconwhite"
+        android:outlineAmbientShadowColor="@color/white"
+        android:outlineSpotShadowColor="@color/white"
+        android:searchHintIcon="@drawable/scaledfinal"
+        android:searchIcon="@drawable/scaledfinal"
+        tools:layout_editor_absoluteX="29dp"
+        tools:layout_editor_absoluteY="28dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

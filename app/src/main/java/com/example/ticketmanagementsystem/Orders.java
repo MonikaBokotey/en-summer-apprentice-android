@@ -9,7 +9,7 @@ public class Orders extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.order_view);
+        setContentView(R.layout.order_card_view);
     }
 
     public Orders(){

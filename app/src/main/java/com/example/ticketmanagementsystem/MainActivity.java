@@ -1,6 +1,7 @@
 package com.example.ticketmanagementsystem;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -10,6 +11,9 @@ import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
@@ -32,14 +36,22 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+
 public class MainActivity extends AppCompatActivity {
-    private String[] dropdownItems1 = {"Option 1", "Option 2", "Option 3"};
-    private String[] dropdownItems2 = {"Choice A", "Choice B", "Choice C"};
+    private String[] dropdownItems1 = {"Festival de muzica", "Sport", "Bauturi"};
+    private String[] dropdownItems2 = {"Stadion", "Castle", "Park"};
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
 
         Spinner spinner1 = findViewById(R.id.spinner1);
         Spinner spinner2 = findViewById(R.id.spinner2);
@@ -89,6 +101,42 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, Orders.class));
             }
         });
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://localhost:7214/swagger/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        // Now, create a service instance using the API interface.
+        MyApi myApi = retrofit.create(MyApi.class);
+
+        // You can now use the 'myApi' instance to make network requests.
+        Call<List<EventDto>> call = myApi.getAllEvents();
+        call.enqueue(new Callback<List<EventDto>>() {
+            @Override
+            public void onResponse(Call<List<EventDto>> call, Response<List<EventDto>> response) {
+                if (response.isSuccessful()) {
+                    List<EventDto> eventList = response.body();
+                    // Process the list of events here
+                    for (EventDto event : eventList) {
+                        // Do something with each event in the list
+                        Log.d("EventInfo", "Event Name: " + event.getEventName());
+
+                    }
+                } else {
+                    // Handle error
+                    Log.e("APIError", "Error: " + response.code() + " " + response.message());
+                    // You can check the response code and response.errorBody() for more details on the error.
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<EventDto>> call, Throwable t) {
+                // Handle failure
+                // This method will be called if the request could not be made or the server returned an error response.
+            }
+        });
+
 
 
 

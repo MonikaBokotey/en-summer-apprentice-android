@@ -3,6 +3,8 @@ package com.example.ticketmanagementsystem;
 public class Event {
     private String name;
 
+
+
     public Event(String name) {
         this.name = name;
     }
@@ -10,6 +12,8 @@ public class Event {
     public String getName() {
         return name;
     }
+
+
 
     public void setName(String name) {
         this.name = name;
